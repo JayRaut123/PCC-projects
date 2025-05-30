@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Greeting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:yellow;
+      text-align: center;
+      margin-top: 100px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="greeting"></h1>
+  <h2 id="currentTime"></h2>
+
+  <script>
+    
+function formatTime(date)
+{
+ let hours=date.getHours().toString().padStart(0,'2');
+ let minutes=date.getMinutes().toString().padStart(0,'2');
+ let seconds=date.getSeconds().toString().padStart(0,'2');
+ return `${hours}:${minutes}:${seconds}`;
+} 
+
+   function updateGreetingAndTime()
+{
+const now= new Date();
+const hour=now.getHours();
+let message="";
+
+      if (hour < 12) {
+        message = "Good Morning!";
+      } else if (hour < 18) {
+        message = "Good Afternoon!";
+      } else {
+        message = "Good Evening!";
+      }
+
+     document.getElementById("greeting").innerText=message;
+     document.getElementById("currentTime").innerText="CurrentTime:" +formatTime(now);
+
+
+    }
+
+    // Call initially and then every second
+    updateGreetingAndTime();
+    setInterval(updateGreetingAndTime, 1000);
+  </script>
+</body>
+</html>
